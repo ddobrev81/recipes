@@ -1,0 +1,23 @@
+recipes.form_add:
+  path: '/recipe/add'
+  defaults:
+    _form: '\Drupal\recipes\Form\RecipesForm'
+    _title: 'Submit a recipe'
+  requirements:
+    _permission: 'recipe_add'
+
+recipes.view:
+  path: '/recipe/{id}'
+  defaults:
+    _controller: '\Drupal\recipes\Controller\RecipesController:content'
+    _title: 'View recipes'
+  requirements:
+    _permission: 'recipe_manage'
+
+recipes.config:
+  path: '/admin/recipe'
+  defaults:
+    _form: '\Drupal\recipes\Form\RecipeEmailConfigForm'
+    _title: 'Recipe Email configuration'
+  requirements:
+    _permission: 'recipe_manage'

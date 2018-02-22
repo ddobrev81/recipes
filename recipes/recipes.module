@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * @file
+ * Module file for the recipes module.
+ */
+
+/**
+ * Validate email.
+ *
+ * @param string $mail
+ *   The checked email.
+ *
+ * @return bool
+ *   Result of the check.
+ */
+function recipes_validate_email($mail) {
+  return \Drupal::service('email.validator')->isValid($mail['#value']);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function recipes_theme() {
+  $path = drupal_get_path('module', 'recipes');
+  $info['recipes_view'] = [
+    'variables' => [
+      'created' => NULL,
+      'title' => NULL,
+      'author' => NULL,
+      'email' => NULL,
+      'description' => NULL,
+      'instructions' => NULL,
+      'ingredients' => NULL,
+    ],
+    'template' => 'recipes-view',
+    'path' => $path . '/theme',
+  ];
+
+  return $info;
+}
+
+/**
+ * Implements hook_mail().
+ */
+function recipes_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'recipe_notify':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('New recipe');
+      $message['body'][] = $params['message'];
+      break;
+  }
+}

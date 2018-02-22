@@ -1,0 +1,5 @@
+recipe_add:
+  title: 'Access recipe add form'
+
+recipe_manage:
+  title: 'Access recipes functionality'

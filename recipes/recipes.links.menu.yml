@@ -1,0 +1,5 @@
+recipes.form_add:
+  title: Submit a recipe
+  description: A simple form for adding recipes with submit processing.
+  route_name: recipes.form_add
+  weight: -9

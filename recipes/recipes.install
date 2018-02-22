@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the recipes module.
+ */
+
+/**
+ * Implements hook_schema().
+ *
+ * Defines the database tables used by this module.
+ *
+ * @see hook_schema()
+ *
+ * @ingroup recipes
+ */
+function recipes_schema() {
+  $schema['recipes'] = [
+    'description' => 'Stores submitted recipes in the database.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Recipe ID.',
+      ],
+      'language' => [
+        'type' => 'varchar',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      'title' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of recipe.',
+      ],
+      'author' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Name of the author.',
+      ],
+      'email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Email of the author.',
+      ],
+      'description' => [
+        'type' => 'varchar',
+        'length' => 500,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Recipe description.',
+      ],
+      'instructions' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Recipe instructions.',
+      ],
+      'ingredients' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Recipe ingredients.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'title' => ['title'],
+    ],
+  ];
+
+  return $schema;
+}

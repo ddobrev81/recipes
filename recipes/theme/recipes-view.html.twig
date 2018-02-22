@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Default theme implementation of recipe view.
+ *
+ * @ingroup themeable
+ */
+#}
+<h1 class="heading">{{ title }}</h1>
+<div class="some-nice-css">
+    <ul>
+        <li>Recipe created by {{ author }} ({{ email }}) on {{ created|format_date('long') }}</li>
+        <li>Description: {{ description }}</li>
+        <li>Instructions: {{ instructions }}</li>
+        <li>Ingredients: {{ ingredients }}</li>
+    </ul>
+</div>
